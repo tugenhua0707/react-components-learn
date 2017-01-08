@@ -74,9 +74,10 @@
 <p>调用成功后，会调用onChange这个参数传递进来的方法，我们在外面就可以使用该方法获取当前的页面后，可以做自己的事情。
 也就是说，如果当前的页面是7的话，点击前五页的省略按钮，那么Math.max(1, this.state.current - 5) 执行这个比较，
 最大值变为2，因此会切换到当前第二页的页码。后面会重新排列；如：</p>
-![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page1.png)
+<p>![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page1.png)</p>
+
 <p>点击前面的省略号的时候，变为如下图所示：</p>
-![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page2.png)
+<p>![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page2.png)</p>
 
 <p>4. 如果总页码 - 当前所在的页码 >= 4 的时候，先克隆最后一页的页码，最后在所有页码之后插入一个省略号；如下代码：</p>
     var jumpNext = (
@@ -99,9 +100,11 @@
       this._handleChange(Math.min(this._calcPage(), this.state.current + 5));
     }
 <p>总页码 和 当前的页码 + 5  最小值进行比较；如果当前的页面是6的话，如下所示：</p>
-![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page3.png)
+<p>![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page3.png)</p>
+
 <p>点击第二个省略号的时候，就会变为如下图所示：</p>
-![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page4.png)
+<p>![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page4.png)</p>
+
 
 <p>5. 最后判断下 left 是不是等于1 和 right 是不是等于总页数，如果不是的话，就把刚刚克隆的第一页 添加
 到第一页去，克隆的最后一页放到最后一页去；如下代码：</p>
@@ -146,7 +149,8 @@
     </div>
     , document.getElementById('showTotal'));
 <p>效果如下：</p>
-![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page5.png)
+<p>![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page5.png)</p>
+
 <p>第一个分页是显示总页数，第二个分页显示 开始页和结束页，及总页数；showTotal函数会返回二个参数，第一个是总页数，第二个是一个数组
 ，当前页码的，开始页和结束页码；
 </p>
