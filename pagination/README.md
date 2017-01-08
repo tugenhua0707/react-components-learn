@@ -92,23 +92,21 @@ _handleChange(p) {
 #### ![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page2.png)
 
 <p>4. 如果总页码 - 当前所在的页码 >= 4 的时候，先克隆最后一页的页码，最后在所有页码之后插入一个省略号；如下代码：</p>
-<pre>
-var jumpNext = (
-  <li
-    key="next"
-    onClick={this._jumpNext}
-    className={`${prefixCls}-jump-next`}
-  >
-    <a href="javascript:void(0)" title={locale.next_5}></a>
-  </li>
-);
-if (allPages - current >= 4) {
-  pagerList[pagerList.length - 1] = React.cloneElement(pagerList[pagerList.length - 1], {
-    className: `${prefixCls}-item-before-jump-next`,
-  });
-  pagerList.push(jumpNext);
-}
-</pre>
+    var jumpNext = (
+      <li
+        key="next"
+        onClick={this._jumpNext}
+        className={`${prefixCls}-jump-next`}
+      >
+        <a href="javascript:void(0)" title={locale.next_5}></a>
+      </li>
+    );
+    if (allPages - current >= 4) {
+      pagerList[pagerList.length - 1] = React.cloneElement(pagerList[pagerList.length - 1], {
+        className: `${prefixCls}-item-before-jump-next`,
+      });
+      pagerList.push(jumpNext);
+    }
 <p>和上面的是一个道理的，点击后面的省略号，会调用这个方法  _jumpNext；代码如下：</p>
 <pre>
 _jumpNext() {
@@ -134,22 +132,20 @@ if (right !== allPages) {
 </pre>
 <p>6. 最后把在页面上显示的文本加上去；比如当前页面是2的话，那么前面显示的文案就是 11-20 of 455 items</p>
 <p>代码如下：</p>
-<pre>
-let totalText = null;
-if (props.showTotal) {
-  totalText = (
-    <span className={`${prefixCls}-total-text`}>
-      {props.showTotal(
-        props.total,
-        [
-          (current - 1) * pageSize + 1,
-          current * pageSize > props.total ? props.total : current * pageSize,
-        ]
-      )}
-    </span>
-  );
-}
-</pre>
+    let totalText = null;
+    if (props.showTotal) {
+      totalText = (
+        <span className={`${prefixCls}-total-text`}>
+          {props.showTotal(
+            props.total,
+            [
+              (current - 1) * pageSize + 1,
+              current * pageSize > props.total ? props.total : current * pageSize,
+            ]
+          )}
+        </span>
+      );
+    }
 <p>页面上调用方法如下：</p>
 <pre>
 import Pagination from '../../../../components/pagination';
