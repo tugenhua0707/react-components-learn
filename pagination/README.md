@@ -18,41 +18,37 @@ if (allPages - current <= 2) {
 </pre>
 <p>如上两个if判断的目的 就是希望页面上只保留5个页码按钮；</p>
 <p>然后如下循环一下：</p>
-<pre>
-for (let i = left; i <= right; i++) {
-  const active = current === i;
-  pagerList.push(
-    <Pager
-      locale={props.locale}
-      rootPrefixCls={prefixCls}
-      onClick={this._handleChange.bind(this, i)}
-      key={i}
-      page={i}
-      active={active}
-    />
-  );
-}
-</pre>
+    for (let i = left; i <= right; i++) {
+      const active = current === i;
+      pagerList.push(
+        <Pager
+          locale={props.locale}
+          rootPrefixCls={prefixCls}
+          onClick={this._handleChange.bind(this, i)}
+          key={i}
+          page={i}
+          active={active}
+        />
+      );
+    }
 <p>把所有的页码渲染出来；</p>
 
 <p>3. 如果当前的页码是大于或者等于5的时候，先复制一份第一页的页码，然后在所有页码之前插入省略号；如下代码：</p>
-<pre>
-var jumpPrev = (
-  <li
-    key="prev"
-    onClick={this._jumpPrev}
-    className={`${prefixCls}-jump-prev`}
-  >
-    <a href="javascript:void(0)" title={locale.prev_5}></a>
-  </li>
-);
-if (current - 1 >= 4) {
-  pagerList[0] = React.cloneElement(pagerList[0], {
-    className: `${prefixCls}-item-after-jump-prev`,
-  });
-  pagerList.unshift(jumpPrev);
-}
-</pre>
+    var jumpPrev = (
+      <li
+        key="prev"
+        onClick={this._jumpPrev}
+        className={`${prefixCls}-jump-prev`}
+      >
+        <a href="javascript:void(0)" title={locale.prev_5}></a>
+      </li>
+    );
+    if (current - 1 >= 4) {
+      pagerList[0] = React.cloneElement(pagerList[0], {
+        className: `${prefixCls}-item-after-jump-prev`,
+      });
+      pagerList.unshift(jumpPrev);
+    }
 <p>当点击上一页省略号按钮的时候，会触发 _jumpPrev 方法；代码如下：</p>
 <pre>
 _jumpPrev() {
@@ -147,25 +143,23 @@ if (right !== allPages) {
       );
     }
 <p>页面上调用方法如下：</p>
-<pre>
-import Pagination from '../../../../components/pagination';
-import React from 'react';
-import ReactDOM from 'react-dom';
+    import Pagination from '../../../../components/pagination';
+    import React from 'react';
+    import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-<div>
-  <Pagination
-    showTotal={(total) => `Total ${total} items`}
-    total={455}
-  />
-  <br />
-  <Pagination
-    showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
-    total={455}
-  />
-</div>
-, document.getElementById('showTotal'));
-</pre>
+    ReactDOM.render(
+    <div>
+      <Pagination
+        showTotal={(total) => `Total ${total} items`}
+        total={455}
+      />
+      <br />
+      <Pagination
+        showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`}
+        total={455}
+      />
+    </div>
+    , document.getElementById('showTotal'));
 <p>效果如下：</p>
 #### ![image](https://github.com/tugenhua0707/react-components-learn/blob/master/pagination/page5.png)
 
